@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    // "target": "ESNext",
+    "types": ["vite/client"],
+    "jsx": "react",
+    "module": "nodenext",
+    "target": "ES2022",
+    "moduleResolution": "nodenext",
+    "noPropertyAccessFromIndexSignature": true,
+    "lib": ["ESNext"],
+    "resolveJsonModule": true,
+    "esModuleInterop": true
+
+    // "forceConsistentCasingInFileNames": true,
+    // "strict": true
+  },
+  "include": [
+    "src/*", // any other source directories
+    "environment.d.ts" // add the custom declaration file here
+  ]
+}
