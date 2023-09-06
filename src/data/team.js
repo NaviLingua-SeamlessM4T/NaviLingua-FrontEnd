@@ -35,7 +35,7 @@ const team = [
     name: "Mind Interfaces",
     job: "Life Science Research (AI) at MIND INTERFACES, INC.",
     image: MindImg,
-    linkedIn: "https://huggingface.co/MIND-INTERFACES",
+    linkedIn: "https://www.linkedin.com/in/william-jason-burns",
     github: "https://github.com/Mind-Interfaces",
     discord: "https://discordapp.com/users/965229395512004628",
   },
