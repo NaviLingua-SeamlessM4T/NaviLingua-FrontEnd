@@ -23,6 +23,7 @@ export default {
         darkPurple: "#593C79",
       },
       fontFamily: {
+        rajdhani: ['Rajdhani', 'sans-serif'],  // Add this line
         poppins: ["Poppins", "sans"],
         Gugi: ["Gugi", "sans"],
         Iceland: ["Iceland", "sans"],
@@ -32,5 +33,11 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addBase }) {
+      addBase({
+        'body': { fontFamily: 'Rajdhani, sans-serif' },  // Set Rajdhani as the default font
+      });
+    },
+  ],
 };
