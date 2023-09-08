@@ -23,13 +23,13 @@ export default {
         darkPurple: "#593C79",
       },
       fontFamily: {
-        Rajdhani: ['Rajdhani', 'sans-serif'],  // Add this line
-        Poppins: ["Poppins", "sans"],
-        Gugi: ["Gugi", "sans"],
-        Iceland: ["Iceland", "sans"],
-        Bruno: ["Bruno Ace", "sans"],
-        Inter: ["Inter", "sans"],
-        Syne: ["Syne", "sans"],
+        Rajdhani: ["Rajdhani", "sans-serif"],  // Add this line
+        Poppins: ["Rajdhani", "Poppins"],
+        Gugi: ["Rajdhani", "Gugi"],
+        Iceland: ["Rajdhani", "Iceland"],
+        Bruno: ["Rajdhani", "Bruno Ace"],
+        Inter: ["Rajdhani", "Inter"],
+        Syne: ["Rajdhani", "Syne"],
       },
     },
   },
