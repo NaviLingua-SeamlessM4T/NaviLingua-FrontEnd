@@ -23,8 +23,8 @@ export default {
         darkPurple: "#593C79",
       },
       fontFamily: {
-        rajdhani: ['Rajdhani', 'sans-serif'],  // Add this line
-        poppins: ["Poppins", "sans"],
+        Rajdhani: ['Rajdhani', 'sans-serif'],  // Add this line
+        Poppins: ["Poppins", "sans"],
         Gugi: ["Gugi", "sans"],
         Iceland: ["Iceland", "sans"],
         Bruno: ["Bruno Ace", "sans"],
