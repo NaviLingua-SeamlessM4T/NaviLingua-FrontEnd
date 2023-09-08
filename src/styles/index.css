@@ -9,6 +9,7 @@
 }
 body {
   /* background-color: black; */
+  font-family: 'Rajdhani', sans-serif;
 }
 
 @layer components {
