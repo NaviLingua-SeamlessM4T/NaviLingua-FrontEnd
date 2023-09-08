@@ -7,7 +7,7 @@ import Welcome from "../components/Welcome";
 
 const Home = () => {
   return (
-    <div className="flex-box flex-col bg-yellow-600">
+    <div className="flex-box flex-col">
       <Header />
       <Welcome />
       <About />
