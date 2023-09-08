@@ -1,5 +1,5 @@
 import TypewriterComponent from "typewriter-effect";
-import HomeButton from "./Home/HomeButton";
+import HomeButton from "./HomeButton";
 
 function Welcome() {
   return (

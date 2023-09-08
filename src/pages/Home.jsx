@@ -2,8 +2,8 @@ import Footer from "../components/Header & Footer/Footer";
 import Header from "../components/Header & Footer/Header";
 import About from "../components/Home/About";
 import Contact from "../components/Home/Contact";
-import Subscription from "../components/Subscription";
-import Welcome from "../components/Welcome";
+import Subscription from "../components/Home/Subscription";
+import Welcome from "../components/Home/Welcome";
 
 const Home = () => {
   return (

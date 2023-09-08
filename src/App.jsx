@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import ChatBot from "./components/Chat/Chatbot";
-import Form from "./pages/Form";
+import Form_updated from "./pages/Form_updated";
 
 import { MessageSquare, X } from "lucide-react";
 import { useState } from "react";
@@ -32,7 +32,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/translation" element={<Form />} />
+        <Route path="/translation" element={<Form_updated />} />
       </Routes>
       {/* {user ? (
           <> */}
