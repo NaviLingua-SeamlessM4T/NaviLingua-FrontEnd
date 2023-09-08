@@ -20,7 +20,7 @@ app.listen(3000, (err) => {
     console.log('> Ready on http://localhost:3000');
 });
 
-// Refactored Axios POST request to match the new API
+// Axios POST request to match the new API
 app.useAsync(async (req, res, next) => {
     const parsedUrl = parse(req.url, true);
     const { pathname, query } = parsedUrl;
@@ -30,19 +30,21 @@ app.useAsync(async (req, res, next) => {
 
         try {
             // Decoding Base64 to blob for 'inputSpeech'
-            const audioBlob = Buffer.from(req.body.audioBase64, 'base64');
-            
+            const audioBlob1 = Buffer.from(req.body.audioBase64, 'base64');
+            const audioBlob2 = Buffer.from(req.body.audioBase64, 'base64'); // Could be different
+
             // New API endpoint
             const newApiUrl = 'https://facebook-seamless-m4t.hf.space/run';
 
             // Mapped and new API parameters
             const newApiParameters = {
-                "task": "S2ST (Speech to Speech translation)", // New parameter
-                "audioSource": "file", // Mapped from req.body.audioBase64
-                "inputSpeech": audioBlob, // Mapped from req.body.audioBase64
-                "inputText": "Howdy!", // New parameter
-                "sourceLanguage": "Afrikaans", // New parameter
-                "targetLanguage": "Bengali" // New parameter
+                "task": "S2ST (Speech to Speech translation)",
+                "audioSource": "file",
+                "inputSpeech1": audioBlob1,
+                "inputSpeech2": audioBlob2,
+                "inputText": "Hello World!",
+                "sourceLanguage": "English",
+                "targetLanguage": "French"
             };
 
             // Axios POST request to the new API
@@ -50,13 +52,19 @@ app.useAsync(async (req, res, next) => {
                 newApiUrl,
                 newApiParameters,
                 {
-                    responseType: 'arraybuffer',
+                    responseType: 'json',
                 }
             );
 
             console.log("Received response from Flask backend");
-            res.setHeader('Content-Type', 'audio/wav');
-            res.send(backendResponse.data);
+
+            // Handle the expected output structure
+            const translatedAudio = backendResponse.data[0]; // Object representing 'Translated speech'
+            const translatedText = backendResponse.data[1]; // String representing 'Translated text'
+
+            // Prepare the response to the frontend
+            res.setHeader('Content-Type', 'application/json');
+            res.send(JSON.stringify({ translatedAudio, translatedText }));
         } catch (error) {
             console.error('Error:', error);
             res.status(500).send('Internal Server Error');
@@ -65,7 +73,6 @@ app.useAsync(async (req, res, next) => {
         next();
     }
 });
-
 
 app.use((req, res, next) => {
     const parsedUrl = parse(req.url, true);
