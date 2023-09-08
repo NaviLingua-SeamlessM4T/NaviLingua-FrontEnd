@@ -11,7 +11,7 @@ function Welcome() {
               <div className="px-6 text-center text-white md:px-12 font-Bruno flex-box flex-col">
                 <div className="bg-gradient-to-r from-blue-500 to-green-500 bg-clip-text text-transparent text-5xl pb-6 font-extrabold sm:text-5xl">
                   Welcome <br /> to
-                  <h2 className="text-5xl text-blue-400 drop-shadow-sm shadow-black">
+                  <h2 className="text-5xl text-blue-700 drop-shadow-sm shadow-black">
                     Navi
                     <span className="text-blue-300">Lingua</span>
                   </h2>
