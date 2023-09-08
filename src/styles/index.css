@@ -54,31 +54,31 @@ body {
   z-index: -1;
   filter: blur(25px);
   border-radius: 20px;
-  background-color: #e499ff;
-  background: linear-gradient(
-        to bottom right,
-        rgba(28, 146, 232, 0.9) 16%,
-        rgba(46, 16, 16, 0.66) 50%
-      )
-      bottom right / 50% 50% no-repeat,
-    linear-gradient(
-        to bottom left,
-        rgba(28, 146, 232, 0.9) 16%,
-        rgba(46, 16, 16, 0.66) 50%
-      )
-      bottom left / 50% 50% no-repeat,
-    linear-gradient(
-        to top left,
-        rgba(28, 146, 232, 0.9) 16%,
-        rgba(46, 16, 16, 0.66) 50%
-      )
-      top left / 50% 50% no-repeat,
-    linear-gradient(
-        to top right,
-        rgba(28, 146, 232, 0.9) 16%,
-        rgba(46, 16, 16, 0.66) 50%
-      )
-      top right / 50% 50% no-repeat;
+background-color: #051d40;
+background: linear-gradient(
+      to bottom right,
+      rgba(5, 29, 64, 0.9) 16%,  /* #051d40 */
+      rgba(20, 93, 160, 0.66) 50%  /* #145da0 */
+    )
+    bottom right / 50% 50% no-repeat,
+  linear-gradient(
+      to bottom left,
+      rgba(5, 29, 64, 0.9) 16%,  /* #051d40 */
+      rgba(20, 93, 160, 0.66) 50%  /* #145da0 */
+    )
+    bottom left / 50% 50% no-repeat,
+  linear-gradient(
+      to top left,
+      rgba(5, 29, 64, 0.9) 16%,  /* #051d40 */
+      rgba(20, 93, 160, 0.66) 50%  /* #145da0 */
+    )
+    top left / 50% 50% no-repeat,
+  linear-gradient(
+      to top right,
+      rgba(5, 29, 64, 0.9) 16%,  /* #051d40 */
+      rgba(20, 93, 160, 0.66) 50%  /* #145da0 */
+    )
+    top right / 50% 50% no-repeat;
 
   /* radial-gradient(at 9% 32%, hsla(222, 75%, 60%, 1) 0px, transparent 50%); */
 }
