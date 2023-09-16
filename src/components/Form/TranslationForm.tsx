@@ -17,12 +17,46 @@ interface TranslationFormProps {
 const TranslationForm: React.FC<TranslationFormProps> = ({
   onAudioGenerated,
 }) => {
+  // const fetchAudio = async () => {
+  //   const response = await fetch("hello.wav");
+  //   return await response.blob();
+  // };
+
+  const convertBlobToFile = (blob: Blob): File => {
+    const fileOptions: FilePropertyBag = {
+      lastModified: Date.now(),
+      type: blob.type,
+    };
+    const convertedFile = new File([blob], name, fileOptions);
+    return convertedFile;
+  };
+  // Get the example audio Blob
+  // Fetch the audio Blob using the Promise<Response>
+  const fetchAudio = async () => {
+    fetch("./hello.wav")
+      .then((response) => response.blob())
+      .then((audioBlob) => {
+        // Convert the Blob to a File object and set the state
+        const convertedAudioFile = convertBlobToFile(audioBlob);
+        setAudio(convertedAudioFile);
+        setMic(convertedAudioFile);
+      })
+      .catch((error) => {
+        console.error("Error fetching audio:", error);
+      });
+  };
+
   const [file, setFile] = useState<File | null>(null);
-  const [lgg, setLgg] = useState<string>("English");
-  const [task, setTask] = useState<string>("S2ST");
-  const [mic, setMic] = useState<string>();
-  const [name, setName] = useState<string>("file");
+  const [task, setTask] = useState<string>(
+    // "S2ST (Speech to Speech translation)"
+    "S2ST"
+  );
+  const [src, setSrc] = useState<string>("file");
+  const [mic, setMic] = useState<File | null>(null);
+  const [audio, setAudio] = useState<File | null>(null);
   const [text, setText] = useState<string>("Howdy!");
+  const [lgg, setLgg] = useState<string>("en");
+  // const [tgt, setTgt] = useState<string>("es");
   const [tgt, setTgt] = useState<string>("Afrikaans");
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -46,32 +80,50 @@ const TranslationForm: React.FC<TranslationFormProps> = ({
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
+    // fetchAudio();
 
     if (!file) {
-      console.error("No file selected");
+      // console.error("No file selected");
       toast.error("No file selected");
       return;
     }
 
     try {
-      console.log("Starting Generating Audio...");
+      console.log("Starting Generating Translation...");
       setIsLoading(true);
 
-      const audioBase64 = await fileToBase64(file);
+      const audioBase = await fileToBase64(file);
+      const micBase = await fileToBase64(file);
+      // const audioBase = await fileToBase64(audio);
+      // const data = {
+      //   task,
+      //   src,
+      //   // mic,
+      //   micBase,
+      //   // audio,
+      //   audioBase,
+      //   text,
+      //   tgt,
+      //   sourceLanguage: "en",
+      //   targetLanguage: "es",
+      // };
       const data = {
-        task,
-        name,
-        mic,
-        audioBase64,
-        text,
-        tgt,
-        // audioFile: file,
-        sourceLanguage: "en",
-        targetLanguage: "es",
+        data: {
+          task_name: task,
+          audio_source: src,
+          // input_audio_mic: mic,
+          input_audio_mic: micBase,
+          // input_audio_file: audio,
+          input_audio_file: audioBase,
+          input_text: text,
+          source_language: lgg,
+          target_language: tgt,
+        },
       };
 
       // const response = await axios.post('https://be79-2600-4041-1f2-1500-c5d0-7-7395-63aa.ngrok-free.app/generate', data, {
       // const response = await axios.post(endpoint, data, {
+      // const response = await axios.post(
       const response = await axios.post(
         "https://facebook-seamless-m4t.hf.space/run/predict",
         data,
@@ -85,6 +137,7 @@ const TranslationForm: React.FC<TranslationFormProps> = ({
       );
 
       const blob = new Blob([response.data.translatedAudio], {
+        // const blob = new Blob([response.data], {
         type: "audio/wav",
       });
 
